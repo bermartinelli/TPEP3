@@ -26,20 +26,17 @@ public class ServicioBFS {
 		
 		while(!list.isEmpty()) {
 			primero = list.remove(0);
-			
+			bfs.add(primero);
 			
 			Iterator<Integer> vecinos = grafo.obtenerAdyacentes(primero);
-			int vec = vecinos.next();
 			
-			if(!visited[vec-1]) {
-				visited[vec-1] = true;
-				bfs.add(primero);
-				
-				while(vecinos.hasNext()) {
-					list.add(vecinos.next());
+			while(vecinos.hasNext()) {
+				int vec = vecinos.next();
+				if(!visited[vec-1]) {
+					visited[vec-1] = true;
+					list.add(vec);
 				}
 			}
-			
 		}
 
 		return bfs;

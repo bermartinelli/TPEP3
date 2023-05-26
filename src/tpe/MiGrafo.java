@@ -9,6 +9,7 @@ public class MiGrafo {
 		 GrafoDirigido miGrafo = new GrafoDirigido();
 			
 			ServicioBFS bfs = new ServicioBFS(miGrafo);
+			ServicioDFS dfs = new ServicioDFS(miGrafo);
 			
 			miGrafo.agregarVertice(1);
 			miGrafo.agregarVertice(2);
@@ -38,8 +39,6 @@ public class MiGrafo {
 			System.out.println("Cantidad de vertices: " + miGrafo.cantidadVertices());
 			
 			
-		
-			
 			
 			Iterator<Integer> vertices = miGrafo.obtenerVertices();
 			int primero = vertices.next();
@@ -54,14 +53,21 @@ public class MiGrafo {
 			
 			System.out.println("--");
 			
-			List<Integer> lista = bfs.bfsForest();
+			List<Integer> listaBFS = bfs.bfsForest();
 			
-			for(Integer vertice : lista) {
+			System.out.println("Lista BFS");
+			for(Integer vertice : listaBFS) {
 				System.out.println(vertice);
 			}
 			
+			System.out.println("--");
 			
+			List<Integer> listaDFS = dfs.dfsForest();
 			
+			System.out.println("Lista DFS");
+			for(Integer vertice : listaDFS) {
+				System.out.println(vertice);
+			}
 
 			
 	 }
