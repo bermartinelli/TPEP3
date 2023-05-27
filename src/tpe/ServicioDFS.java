@@ -10,7 +10,6 @@ public class ServicioDFS {
 
 	private Grafo<?> grafo;
 	private HashMap<Integer, Integer> visitados;
-	private List<Integer> dfs;
 	
 	// clave valor: clave todos los vertices, valor 0= no visitado, 1=en transito, 2= ya visitado
 	//
@@ -18,44 +17,45 @@ public class ServicioDFS {
 
 	public ServicioDFS(Grafo<?> grafo) {
 		this.grafo = grafo;
-		this.dfs = new ArrayList<Integer>();
+		this.visitados = new HashMap<Integer, Integer>();
 	}
+	
 	
 	public List<Integer> dfsForest() {
 		
-		List<Integer> bfs = new ArrayList<>();
-
-		
+		List<Integer> dfs = new ArrayList<>();
 		Iterator<Integer> vertices = grafo.obtenerVertices();
 		while (vertices.hasNext()) {
 			visitados.put(vertices.next(), 0);
 		}
 		
-		
-		visitados.put(1, 1);
-	
-		int indice = vertices.next();
-		
-		Iterator<Integer> hijos = grafo.obtenerAdyacentes(indice);
-		if(hijos.hasNext() == false) {
-			visitados.put(indice, 2);
-			dfs.add(indice);
-		} else {
-			Iterator<Integer> nietos = grafo.obtenerAdyacentes(hijos.next());
-			dfs.addAll(DFS(nietos));
+		Iterator<Integer> vertices2 = grafo.obtenerVertices();
+		while (vertices2.hasNext()) {
+			if (visitados.get(vertices2.next()) == 0) {
+				dfs.addAll(dfsVisit(vertices2.next()));
+			}
 		}
 		
-		
-	    return dfs;
+		return dfs;
 	}
 	
-	private List<Integer> DFS(Iterator<Integer> it) {
+	private List<Integer> dfsVisit(Integer vertice) {
 		List<Integer> tmp = new ArrayList<Integer>();
 		
+		visitados.put(vertice, 1); //marca el vertice como en visita
+		Iterator<Integer> it = grafo.obtenerAdyacentes(vertice);
 		
-		if(it.hasNext() == false) {
-			visitados.put(indice, 2);
-			dfs.add(indice);
+		while(it.hasNext()) {
+			Integer ints = it.next();
+			if(visitados.get(ints) == 0) {
+				tmp.addAll(dfsVisit(ints));
+			} else {
+				it.next();
+			}
+		}
+		
+		visitados.put(vertice, 2); //marcar el vertice como visitado.
+		tmp.add(vertice);
 		
 		return tmp;
 	}
