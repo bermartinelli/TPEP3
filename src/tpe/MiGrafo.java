@@ -68,7 +68,21 @@ public class MiGrafo {
 			for(Integer vertice : listaDFS) {
 				System.out.println(vertice);
 			}
-
+			
+			ServicioCaminos caminos =  new ServicioCaminos(miGrafo, 1, 3, 1);
+			
+			List<List<Integer>> listaDeCaminos = caminos.caminos();
+			
+			System.out.println("Cantidad de caminos: " + listaDeCaminos.size());
+			
+			int contador = 0;
+			for (List<Integer> camino : listaDeCaminos) {
+				contador++;
+				System.out.print("Camino " + contador + " : ");
+				for(Integer vertice : camino) {
+					System.out.print(vertice + ", ");
+				}
+			}
 			
 	 }
 	
