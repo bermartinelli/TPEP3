@@ -12,9 +12,6 @@ public class ServicioDFS {
 	private HashMap<Integer, Integer> visitados;
 	
 	// clave valor: clave todos los vertices, valor 0= no visitado, 1=en transito, 2= ya visitado
-	//
-	//
-
 	public ServicioDFS(Grafo<?> grafo) {
 		this.grafo = grafo;
 		this.visitados = new HashMap<Integer, Integer>();
