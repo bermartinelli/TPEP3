@@ -20,7 +20,9 @@ public class ServicioDFS {
 		this.visitados = new HashMap<Integer, Integer>();
 	}
 	
-	
+	// Este método realiza una iteración sobre todos los vértices del grafo y llama al método dfsVisit para cada vértice no visitado. 
+	// El costo de este método depende del número de vértices en el grafo. 
+	// Si hay N vértices, la complejidad sería O(N).
 	public List<Integer> dfsForest() {
 		
 		List<Integer> dfs = new ArrayList<>();
@@ -38,6 +40,8 @@ public class ServicioDFS {
 		
 		return dfs;
 	}
+	// El costo de este método depende del número de vértices y aristas en el grafo. 
+	// Si hay N vértices y M aristas, la complejidad sería O(N+M), ya que en el peor caso podría visitar todos los vértices y aristas del grafo.
 	
 	private List<Integer> dfsVisit(Integer vertice) {
 		List<Integer> tmp = new ArrayList<Integer>();

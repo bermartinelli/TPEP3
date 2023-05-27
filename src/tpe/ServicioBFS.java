@@ -13,6 +13,11 @@ public class ServicioBFS {
 		this.grafo = grafo;
 	}
 	
+	// Tiempo lineal, O(V + E), donde V es la cantidad de vértices en el grafo y E es la cantidad de arcos.
+	// El costo del método depende del número de vértices y arcos presentes en el grafo. 
+	// El tiempo de ejecución aumenta linealmente con el número de vértices (V) y arcos (E) en el grafo. 
+	// Si hay más vértices y arcos, el tiempo requerido será mayor. 
+	// Por lo tanto, cuanto más grande sea el grafo y más conexiones tenga, mayor será el costo del método.
 	public List<Integer> bfsForest() {
 		
 		boolean[]visited = new boolean[grafo.cantidadVertices()];
